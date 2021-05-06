@@ -3,6 +3,7 @@ import { User } from './../../user';
 import { ValidationService } from './../../services/validation.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -19,11 +20,13 @@ export class RegisterComponent implements OnInit {
   };
   success: boolean = false;
   fail: boolean = false;
+  user: any;
 
   constructor(
     private validateService: ValidationService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
@@ -33,13 +36,22 @@ export class RegisterComponent implements OnInit {
     // Register user
 
     this.authService.RegisterUser(this.userModel).subscribe((data) => {
-      if (data) {
+      this.user = data;
+      if (this.user.success) {
+
+        console.log(this.user);
         this.success = true;
+        this.toastr.success('Login', 'User Registered!');
         this.router.navigate(['/login']);
+
       } else {
         this.fail = true;
+        this.toastr.error(this.user.msg, 'Error!');
         this.router.navigate(['/register']);
       }
     });
+  }
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 }

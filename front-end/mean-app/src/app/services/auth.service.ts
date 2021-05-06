@@ -17,4 +17,19 @@ export class AuthService {
   RegisterUser(user) {
     return this.http.post(`${this._url}/register`, user);
   }
+  authenticateUser(user) {
+    return this.http.post(`${this._url}/authenticate`, user);
+  }
+  storeUserData(token, user) {
+    localStorage.setItem('id token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
+
+  }
+  logout() {
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+  }
 }
