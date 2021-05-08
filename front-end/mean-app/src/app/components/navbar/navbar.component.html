@@ -6,15 +6,21 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <button class="btn btn-outline-warning m-2" type="submit" routerLink='/register'>Register</button>
+          <button class="btn btn-outline-warning m-2" type="submit" *ngIf="authservice.loggedIn()" routerLink='/register'
+          routerLinkActive="active">Register</button>
+          <button class="btn btn-outline-info m-2" type="submit" *ngIf="!authservice.loggedIn()" routerLink='/dashboard'
+          routerLinkActive="active">Dashboard</button>
+
         </ul>
         
 
         <form class="d-flex">
-        
-                <button class="btn btn-outline-primary m-2" type="submit" routerLink='/login'>Login</button>
-                <button class="btn btn-outline-danger m-2" type="submit" (click)="onLogOut()" href="#">Logout</button>
-         
+                <button class="btn btn-outline-secondary m-2" type="submit" *ngIf="!authservice.loggedIn()" routerLink='/profile'
+                routerLinkActive="active">Profile</button>
+                <button class="btn btn-outline-primary m-2" type="submit" *ngIf="authservice.loggedIn()" routerLink='/login'
+                routerLinkActive="active">Login</button>
+                <button class="btn btn-outline-danger m-2" type="submit" *ngIf="!authservice.loggedIn()" routerLinkActive="active"
+                (click)="onLogOut()" href="#">Logout</button>
         </form>
       </div>
     </div>

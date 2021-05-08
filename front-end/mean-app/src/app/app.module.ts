@@ -28,6 +28,7 @@ import { CommonModule } from '@angular/common';
     HomeComponent,
     DashboardComponent,
     ProfileComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -37,6 +38,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
+ 
    
   
   ],

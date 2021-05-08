@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authservice: AuthService, 
+  constructor(public authservice: AuthService, 
     private toastr: ToastrService,
     private router: Router) { }
 
