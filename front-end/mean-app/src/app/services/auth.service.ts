@@ -11,7 +11,7 @@ export class AuthService {
 
   authToken: any;
   user: any;
-  _url = 'users';
+  _url = 'http://localhost:3000/users';
 
   constructor(private http: HttpClient) { }
 
