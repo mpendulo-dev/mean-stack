@@ -33,6 +33,11 @@ export class RegisterComponent implements OnInit {
   onRegister() {
     console.log(this.userModel);
 
+    // if(typeof(this.userModel.name) !== 'string' && typeof(this.userModel.username) !== 'string') {
+    //   this.toastr.error('Name should be a string', 'Error')
+
+    // }
+
     // Register user
 
     this.authService.RegisterUser(this.userModel).subscribe((data) => {
@@ -51,7 +56,5 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+  
 }

@@ -36,9 +36,16 @@ export class LoginComponent implements OnInit {
         this.toastr.success('User Logged in', 'Success')
         this.router.navigate(['dashboard']);
 
-      } else{
+      } 
+      else if(!this.userData.success && user.password !== undefined && user.username !== undefined) {
+        console.log(this.userData);
         this.toastr.error(this.userData.msg,'Error!');
         this.router.navigate(['login']);
+      }
+      console.log(user);
+      if(user.username === undefined && user.password === undefined) {
+        this.toastr.error('Please enter user credentials', 'Error');
+
       }
     });
    
